@@ -15,7 +15,7 @@ namespace Unity.VisualScripting.Community
             var outputHasConnection = outputs[0].port.hasAnyConnection;
             mouseIsOver = new Rect(_position.x - 20, _position.y - 10, mouseIsOver ? 80 : 40, 40).Contains(mousePosition);
 
-#if VISUAL_SCRIPTING_1_7_3
+#if VISUAL_SCRIPTING_1_7_3_OR_GREATER
             _position.width = 26;
             GraphGUI.Node(new Rect(position.x, position.y + 3, 26, _position.height - 4), NodeShape.Square, NodeColor.Gray, isSelected);
 #else
@@ -48,7 +48,7 @@ namespace Unity.VisualScripting.Community
             _position.x = unit.position.x;
             _position.y = unit.position.y;
 
-#if VISUAL_SCRIPTING_1_7_3
+#if VISUAL_SCRIPTING_1_7_3_OR_GREATER
             _position.width = 26;
 #else
             _position.width = !inputHasConnection || !outputHasConnection || isSelected || mouseIsOver ? 26 : - 19;
@@ -61,7 +61,7 @@ namespace Unity.VisualScripting.Community
 
             if (valueIcon == null && (inputPort.Descriptor()).description.icon != null) valueIcon = ((UnitPortDescriptor)inputPort.Descriptor()).description.icon;
 
-#if !VISUAL_SCRIPTING_1_7_3
+#if !VISUAL_SCRIPTING_1_7_3_OR_GREATER
             if (inputHasConnection && !outputHasConnection) { ((UnitPortDescriptor)inputPort.Descriptor()).description.icon = null; }
             ((UnitPortDescriptor)inputPort.Descriptor()).description.icon = !inputHasConnection || isSelected || mouseIsOver ? valueIcon : null;
             ((UnitPortDescriptor)outputPort.Descriptor()).description.icon = !outputHasConnection || isSelected || mouseIsOver ? valueIcon : null;
